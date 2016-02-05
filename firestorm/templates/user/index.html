@@ -21,13 +21,13 @@
       <th>Interest</th>
       <th>Skill</th>
     </tr>
-    {% for topic in topics_unvoted %}
+    {% for topic_form in topics_unvoted %}
         <tr>
             <td>
-                <b><a href="{{ topic.url }}" target="_blank">{{ topic.subject }}</a></b> <small><i>({{ topic.get_depth_display }})</i></small>
+                <b><a href="{{ topic_form.topic.url }}" target="_blank">{{ topic.subject }}</a></b> <small><i>({{ topic.get_depth_display }})</i></small>
             </td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
+            <td>{{ topic_form.users_topic_interest_level }}</td>
+            <td>{{  }} /></td>
         </tr>
         <tr>
             <td colspan="3">{{ topic.description }}<i><small> Submitted by: {{ topic.suggested_by }} </small></i></td>
