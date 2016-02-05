@@ -15,9 +15,26 @@
 
 {% block center %}
   <p>Top: Vote on anything that you haven't voted on yet</p>
-  {% for topic in topics_unvoted %}
-    {{ topic }}<br />
-  {% endfor %}
+  <table border="0">
+    <tr>
+      <th>Subject</th>
+      <th>Interest</th>
+      <th>Skill</th>
+    </tr>
+    {% for topic in topics_unvoted %}
+        <tr>
+            <td>
+                <b><a href="{{ topic.url }}" target="_blank">{{ topic.subject }}</a></b> <small><i>({{ topic.get_depth_display }})</i></small>
+            </td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+        </tr>
+        <tr>
+            <td colspan="3">{{ topic.description }}<i><small> Submitted by: {{ topic.suggested_by }} </small></i></td>
+        </tr>
+        <tr><td><br></td></tr>
+    {% endfor %}
+  </table>
   <p>Bottom: Alter votes on anything that you may want to change</p>
   {% for vote_item in vote_data %}
     {{ vote_item }}<br />
