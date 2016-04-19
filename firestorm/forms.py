@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.forms import ModelForm
+from django.forms import CharField, ModelForm
 
 from .models import Topic, UserPreferences
 
@@ -15,4 +15,5 @@ class TopicForm(ModelForm):
 class PreferencesForm(ModelForm):
     class Meta:
         model = UserPreferences
-        fields = ['user_topic', 'user', 'users_current_skill_level', 'topic']
+        #fields = ['user', 'topic', 'users_topic_interest_level', 'users_current_skill_level']
+        fields = ['users_topic_interest_level', 'users_current_skill_level']

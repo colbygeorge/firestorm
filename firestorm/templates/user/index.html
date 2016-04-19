@@ -24,13 +24,12 @@
     {% for topic_form in topics_unvoted %}
         <tr>
             <td>
-                <b><a href="{{ topic_form.topic.url }}" target="_blank">{{ topic.subject }}</a></b> <small><i>({{ topic.get_depth_display }})</i></small>
+                <b><a href="{{ topic_form.topic.url }}" target="_blank">{{ topic_form.topic }}</a></b> <small><i>({{ topic_form.topic.get_depth_display }})</i></small>
             </td>
-            <td>{{ topic_form.users_topic_interest_level }}</td>
-            <td>{{  }} /></td>
+            <td><form method="post" action="">{{ topic_form.form.users_topic_interest_level }}{{ topic_form.form.users_current_skill_level  }}<input type="submit" value="Save"></form></td>
         </tr>
         <tr>
-            <td colspan="3">{{ topic.description }}<i><small> Submitted by: {{ topic.suggested_by }} </small></i></td>
+            <td colspan="3">{{ topic_form.topic.description }}<i><small> Submitted by: {{ topic_form.topic.suggested_by }} </small></i></td>
         </tr>
         <tr><td><br></td></tr>
     {% endfor %}

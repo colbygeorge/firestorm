@@ -25,9 +25,13 @@ def home(request):
     the end-user to then make changes to the content presented to him/her.
     """
     topics_unvoted = Topic.objects.exclude(user_prefs__exact=request.user)
-    forms = []
+    forms = list()
     for topic_entry in topics_unvoted:
-        forms.append(PreferencesForm(initial={'user': request.user, 'topic': topic_entry}))
+        forms.append({
+            'topic': topic_entry,
+            'form': PreferencesForm(initial={})
+        })
+        # forms.append(PreferencesForm(initial={'user': request.user, 'topic': 'cows'}))
     vote_data = UserPreferences.objects.filter(user__exact=request.user)
     context = {'subject_create_form': TopicForm(),
                'topics_unvoted': forms,
